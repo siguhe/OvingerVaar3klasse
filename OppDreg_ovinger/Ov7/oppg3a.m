@@ -18,13 +18,12 @@ D=0;
 Q=eye(2)*4;
 R=1;
 
-
-[K,P1,asda]=dlqr(Ad,Bd,Q,R,[])
+[K,P,asda]=dlqr(Ad,Bd,Q,R,[])
 P=[0 0];
 P(1)=0.5+0.03j;
 P(2)=0.5-0.03j;
 K_f=place(Ad,C',P);
 
 epswat=[Ad-Bd*K Bd*K;
-    zeros(2) A-K_f*C'];
+    zeros(2) A-K_f.*C];
 eig(epswat);
